@@ -1,0 +1,13 @@
+Bootstrap: docker
+From: alpine:latest
+
+%post
+
+sed -i -e 's/v[[:digit:]]\..*\//edge\//g' /etc/apk/repositories
+
+apk upgrade --update-cache --available
+apk add --no-cache nodejs
+
+%runscript
+
+node "$@"
