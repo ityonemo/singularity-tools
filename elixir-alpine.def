@@ -1,0 +1,11 @@
+bootstrap: docker
+from: elixir:1.9.4-alpine
+
+%post 
+
+apk update
+apk add --no-cache git
+
+%runscript
+
+$@

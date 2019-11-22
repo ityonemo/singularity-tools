@@ -1,0 +1,6 @@
+Bootstrap: docker
+From: julia:latest
+
+%runscript
+
+julia "$@"
