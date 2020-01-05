@@ -1,6 +1,11 @@
 Bootstrap: docker
 From: julia:latest
 
+%post
+
+apt-get update
+apt-get install -y qt5-default
+
 %runscript
 
 julia "$@"
