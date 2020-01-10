@@ -1,0 +1,13 @@
+bootstrap: docker
+from: alpine
+
+%post
+
+echo http://dl-3.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
+
+apk update
+apk add chromium
+
+%runscript
+
+chromium-browser
