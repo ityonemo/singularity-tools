@@ -1,0 +1,15 @@
+Bootstrap: docker
+From: ubuntu:xenial
+
+# this image exists to pull pxelinux files from an ubuntu distribution
+# and send them to the local filesystem
+
+%post
+
+apt-get update
+apt-get install -y syslinux pxelinux
+
+%runscript
+
+cp /usr/lib/PXELINUX/pxelinux.0 .
+cp /usr/lib/syslinux/modules/bios/ldlinux.c32 .
