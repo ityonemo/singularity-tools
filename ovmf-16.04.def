@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: ubuntu:xenial
+
+# this image exists to pull pxe ovmf files from an ubuntu distribution
+# and send them to the local filesystem
+
+%post
+
+apt-get update
+apt-get install -y ovmf
+
+%runscript
+
+if [ ! "$USER" = "root" ]; then
+  echo "you must be root to run this container!"
+  exit 1
+fi
+
+cp -r /usr/share/OVMF .
